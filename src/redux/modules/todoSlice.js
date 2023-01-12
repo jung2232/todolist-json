@@ -6,7 +6,7 @@ export const __getTodoThunk = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       const { data } = await axios.get(
-        `http://localhost:3001/todos/${payload}`
+        `https://hickory-wooden-rainforest.glitch.me/todos/${payload}`
       );
       return thunkAPI.fulfillWithValue(data);
     } catch (error) {
@@ -20,7 +20,7 @@ export const __updateTodoThunk = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       const data = await axios.patch(
-        `http://localhost:3001/todos/${payload.id}`,
+        `https://hickory-wooden-rainforest.glitch.me/todos/${payload.id}`,
         payload
       );
       return thunkAPI.fulfillWithValue(data.data);

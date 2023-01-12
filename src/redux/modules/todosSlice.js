@@ -12,7 +12,9 @@ export const __addTodos = createAsyncThunk(
 
   async (payload, thunkAPI) => {
     try {
-      const data = await axios.get("http://localhost:3001/todos");
+      const data = await axios.get(
+        `https://hickory-wooden-rainforest.glitch.me/todos`
+      );
       return thunkAPI.fulfillWithValue(data.data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -24,7 +26,9 @@ export const __deleteTodoThunk = createAsyncThunk(
   "todos/deleteTodos",
   async (id, thunkAPI) => {
     try {
-      const data = await axios.delete(`http://localhost:3001/todos/${id}`);
+      const data = await axios.delete(
+        `https://hickory-wooden-rainforest.glitch.me/todos/${id}`
+      );
       if (data.status === 200) {
         thunkAPI.dispatch(__addTodos());
       }
@@ -39,7 +43,9 @@ export const __getTodosThunk = createAsyncThunk(
   "GET_TODOS",
   async (_, thunkAPI) => {
     try {
-      const { data } = await axios.get("http://localhost:3001/todos");
+      const { data } = await axios.get(
+        `https://hickory-wooden-rainforest.glitch.me/todos`
+      );
       return thunkAPI.fulfillWithValue(data);
     } catch (e) {
       return thunkAPI.rejectWithValue(e.code);
